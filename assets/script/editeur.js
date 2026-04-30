@@ -3,7 +3,7 @@
 ═══════════════════════════════════════════════════════════ */
 
 let activeTab = 'html';
-let autoRun   = false;
+let autoRun   = true;
 let autoTimer = null;
 let nLog = 0, nWarn = 0, nErr = 0;
 

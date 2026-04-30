@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HELPDEV — Accueil</title>
-  <link rel="stylesheet" href="../css/index.css" />
+  <link rel="stylesheet" href="./assets/css/index.css" />
 </head>
 
 <body>
@@ -13,22 +13,22 @@
 
     <!-- MAIN CONTENT -->
     <main class="main">
-     <nav class="navbar">
-                <a href="./index.html" class="navbar__brand">HELP<span>DEV</span></a>
-                <span class="navbar__sep"></span>
-                <a href="index.html" class="navbar__link navbar__link--home">⌂ Accueil</a>
-                <a href="../pages/helpcmd.html" class="navbar__link navbar__link--cmd">&gt;_ Commandes</a>
-                <a href="#" class="navbar__link navbar__link--var">{ } Variables</a>
-                <a href="editeur.html" class="navbar__link navbar__link--editor">◈ Éditeur</a>
-                <div class="navbar__right">
-                    <div class="sidebar-nav-divider"></div>
-                <button id="themeToggle" class="sidebar-nav-item" style="width: 100%; cursor: pointer;">
-                    <span class="sidebar-nav-icon" id="themeIcon">☼</span>
-                    <span id="themeText">Mode Clair</span>
-                </button>
-                </div>
-                
-            </nav>
+      <nav class="navbar">
+        <a href="./index.html" class="navbar__brand">HELP<span>DEV</span></a>
+        <span class="navbar__sep"></span>
+        <a href="#" class="navbar__link navbar__link--home">⌂ Accueil</a>
+        <a href="./assets/pages/helpcmd.html" class="navbar__link navbar__link--cmd">&gt;_ Commandes</a>
+        <a href="./assets/pages/vars.html" class="navbar__link navbar__link--var">{ } Variables & Snippets</a>
+        <a href="./assets/pages/editeur.html" class="navbar__link navbar__link--editor">◈ Éditeur</a>
+        <div class="navbar__right">
+          <div class="sidebar-nav-divider"></div>
+          <button id="themeToggle" class="sidebar-nav-item" style="width: 100%; cursor: pointer;">
+            <span class="sidebar-nav-icon" id="themeIcon">☼</span>
+            <span id="themeText">Mode Clair</span>
+          </button>
+        </div>
+
+      </nav>
       <div class="home-page">
 
         <!-- HERO SECTION -->
@@ -63,7 +63,7 @@
         <div class="home-grid">
 
           <!-- CARTE: COMMANDES -->
-          <a href="helpcmd.html" class="hub-card hub-card--cmd">
+          <a href="./assets/pages/helpcmd.html" class="hub-card hub-card--cmd">
             <div class="hub-card-icon">>_</div>
             <h3 class="hub-card-title">Base de Commandes</h3>
             <p class="hub-card-desc">
@@ -73,8 +73,19 @@
             <div class="hub-card-arrow">Ouvrir le module <span>→</span></div>
           </a>
 
+          <!-- CARTE: VARIABLES & SNIPPETS -->
+          <a href="./assets/pages/vars.html" class="hub-card hub-card--vars">
+            <div class="hub-card-icon">var</div>
+            <h3 class="hub-card-title">Snippets & Variables</h3>
+            <p class="hub-card-desc">
+              (À venir) Ta bibliothèque de fragments de code, palettes de couleurs hex/rgb,
+              et composants front-end prêts à être copiés-collés.
+            </p>
+            <div class="hub-card-arrow">Ouvrir le module <span>→</span></div>
+          </a>
+
           <!-- CARTE: ÉDITEUR -->
-          <a href="editeur.html" class="hub-card hub-card--editor">
+          <a href="./assets/pages/editeur.html" class="hub-card hub-card--editor">
             <div class="hub-card-icon">{ }</div>
             <h3 class="hub-card-title">Éditeur Live</h3>
             <p class="hub-card-desc">
@@ -83,23 +94,12 @@
             </p>
             <div class="hub-card-arrow">Ouvrir le module <span>→</span></div>
           </a>
-
-          <!-- CARTE: VARIABLES (Future) -->
-          <a href="#" class="hub-card hub-card--vars">
-            <div class="hub-card-icon">var</div>
-            <h3 class="hub-card-title">Snippets & Variables</h3>
-            <p class="hub-card-desc">
-              (À venir) Ta bibliothèque de fragments de code, palettes de couleurs hex/rgb,
-              et composants front-end prêts à être copiés-collés.
-            </p>
-            <div class="hub-card-arrow">Bientôt disponible <span>→</span></div>
-          </a>
-
         </div>
 
       </div>
     </main>
   </div>
 </body>
-<script src="../script/theme.js"></script>
+<script src="./assets/script/theme.js"></script>
+
 </html>
