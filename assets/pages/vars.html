@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HELPDEV — Snippets & Variables</title>
+  <link rel="stylesheet" href="../css/index.css" />
+  <link rel="stylesheet" href="../css/vars.css" />
+</head>
+
+<body>
+  <div class="app">
+    <main class="main">
+      <nav class="navbar">
+        <a href="/" class="navbar__brand">HELP<span>DEV</span></a>
+        <span class="navbar__sep"></span>
+        <a href="/" class="navbar__link navbar__link--home">⌂ Accueil</a>
+        <a href="../pages/helpcmd.html" class="navbar__link navbar__link--cmd">&gt;_ Commandes</a>
+        <a href="../pages/vars.html" class="navbar__link navbar__link--var">{ } Variables & Snippets</a>
+        <a href="editeur.html" class="navbar__link navbar__link--editor">◈ Éditeur</a>
+        <div class="navbar__right">
+          <div class="sidebar-nav-divider"></div>
+          <button id="themeToggle" class="sidebar-nav-item" style="width: 100%; cursor: pointer;">
+            <span class="sidebar-nav-icon" id="themeIcon">☼</span>
+            <span id="themeText">Mode Clair</span>
+          </button>
+        </div>
+
+      </nav>
+      <div class="cmd-page">
+        <section class="cmd-hero">
+          <div class="cmd-hero-top">
+            <div>
+              <h1 class="cmd-hero-title">Snippets & <span>Variables</span></h1>
+              <p class="cmd-hero-text">
+                Ta bibliothèque personnelle de fragments de code et ton aide-mémoire complet.
+                Retrouve toutes les balises HTML, propriétés CSS et méthodes JavaScript natives.
+              </p>
+            </div>
+            <div class="cmd-hero-stats">
+              <div class="cmd-stat">
+                <span class="cmd-stat-number" id="heroCount">0</span>
+                <span class="cmd-stat-label">Snippets / Listes</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cmd-toolbar">
+            <input type="text" id="searchInput" class="cmd-search"
+              placeholder="Rechercher une balise, méthode, attribut (ex: flex, array, input)..." />
+            <div class="cmd-filter-group">
+              <button class="cmd-filter active" data-filter="all">Tous</button>
+              <button class="cmd-filter" data-filter="html">HTML</button>
+              <button class="cmd-filter" data-filter="css">CSS</button>
+              <button class="cmd-filter" data-filter="js">JavaScript</button>
+            </div>
+          </div>
+
+          <div class="cmd-toolbar-meta">
+            <div class="cmd-meta-box" id="resultCount">0 blocs</div>
+            <div class="cmd-meta-box" id="activeFilter">Filtre: TOUS</div>
+          </div>
+        </section>
+
+        <div class="cmd-sections">
+
+          <!-- ================= HTML ================= -->
+          <section class="cmd-section" data-category="html">
+            <div class="cmd-section-header">
+              <h2 class="cmd-section-title">HTML</h2>
+              <span class="cmd-section-badge">Structure & Balises</span>
+            </div>
+
+            <div class="cmd-section-grid">
+              <!-- LIGNE 1 : SNIPPETS HTML -->
+              <article class="cmd-card" data-search="html boilerplate base start document 5 head meta">
+                <button class="copy-btn">Copier</button>
+                <div class="cmd-card-label">Boilerplate HTML5</div>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Doc&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;script src="app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p>Structure minimale pour un projet web.</p>
+              </article>
+
+              <article class="cmd-card" data-search="html form input contact submit label">
+                <button class="copy-btn">Copier</button>
+                <div class="cmd-card-label">Formulaire Base</div>
+                <pre><code>&lt;form action="#" method="POST"&gt;
+  &lt;label for="email"&gt;Email&lt;/label&gt;
+  &lt;input type="email" id="email" required&gt;
+
+  &lt;button type="submit"&gt;Envoyer&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                <p>Un formulaire basique avec sémantique.</p>
+              </article>
+
+              <article class="cmd-card" data-search="html table tableau tr td th thead tbody">
+                <button class="copy-btn">Copier</button>
+                <div class="cmd-card-label">Tableau Sémantique</div>
+                <pre><code>&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Nom&lt;/th&gt;
+      &lt;th&gt;Âge&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Alice&lt;/td&gt;
+      &lt;td&gt;28&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                <p>Structure parfaite pour les données.</p>
+              </article>
+
+              <article class="cmd-card" data-search="html picture source image responsive webp">
+                <button class="copy-btn">Copier</button>
+                <div class="cmd-card-label">Image Responsive</div>
+                <pre><code>&lt;picture&gt;
+  &lt;source srcset="img.webp" type="image/webp"&gt;
+  &lt;img src="img.jpg" alt="Desc" loading="lazy"&gt;
+&lt;/picture&gt;</code></pre>
+                <p>Formats modernes avec lazy loading.</p>
+              </article>
+
+              <!-- LIGNE 2 : LISTES HTML -->
+              <article class="cmd-card" data-search="html tags balises liste sémantique header nav main footer">
+                <div class="cmd-card-label">Aide-Mémoire : Sémantique</div>
+                <ul class="cmd-list">
+                  <li><span class="var-name">&lt;main&gt;</span> Contenu principal unique</li>
+                  <li><span class="var-name">&lt;header&gt;</span> En-tête de page / section</li>
+                  <li><span class="var-name">&lt;footer&gt;</span> Pied de page</li>
+                  <li><span class="var-name">&lt;nav&gt;</span> Menu de navigation</li>
+                  <li><span class="var-name">&lt;section&gt;</span> Bloc thématique groupé</li>
+                  <li><span class="var-name">&lt;article&gt;</span> Contenu indépendant</li>
+                  <li><span class="var-name">&lt;aside&gt;</span> Contenu secondaire (Sidebar)</li>
+                  <li><span class="var-name">&lt;div&gt;</span> Conteneur générique (sans sens)</li>
+                </ul>
+              </article>
+
+              <article class="cmd-card" data-search="html tags texte text p a strong em br hr h1 h2 li ul ol">
+                <div class="cmd-card-label">Aide-Mémoire : Texte</div>
+                <ul class="cmd-list">
+                  <li><span class="var-name">&lt;h1&gt; à &lt;h6&gt;</span> Titres par importance</li>
+                  <li><span class="var-name">&lt;p&gt;</span> Paragraphe de texte</li>
+                  <li><span class="var-name">&lt;a href=""&gt;</span> Lien hypertexte</li>
+                  <li><span class="var-name">&lt;strong&gt;</span> Texte important (Gras)</li>
+                  <li><span class="var-name">&lt;em&gt;</span> Emphase (Italique)</li>
+                  <li><span class="var-name">&lt;ul&gt; / &lt;ol&gt;</span> Liste à puces / numérotée</li>
+                  <li><span class="var-name">&lt;li&gt;</span> Élément de liste</li>
+                  <li><span class="var-name">&lt;br&gt; / &lt;hr&gt;</span> Saut de ligne / Ligne séparatrice</li>
+                </ul>
+              </article>
+
+              <article class="cmd-card"
+                data-search="html forms inputs formulaire input textarea select button label option type">
+                <div class="cmd-card-label">Aide-Mémoire : Formulaires</div>
+                <ul class="cmd-list">
+                  <li><span class="var-name">&lt;form&gt;</span> Englobe le formulaire</li>
+                  <li><span class="var-name">&lt;input type="text"&gt;</span> Champ texte normal</li>
+                  <li><span class="var-name">&lt;input type="email"&gt;</span> Champ e-mail (validé)</li>
+                  <li><span class="var-name">&lt;input type="radio"&gt;</span> Bouton radio (1 choix)</li>
+                  <li><span class="var-name">&lt;textarea&gt;</span> Zone de texte multiligne</li>
+                  <li><span class="var-name">&lt;select&gt;</span> Menu déroulant</li>
+                  <li><span class="var-name">&lt;option&gt;</span> Choix du select</li>
+                  <li><span class="var-name">&lt;button&gt;</span> Bouton cliquable</li>
+                </ul>
+              </article>
+
+              <article class="cmd-card"
+                data-search="html medias media img video audio iframe canvas svg source picture">
+                <div class="cmd-card-label">Aide-Mémoire : Médias</div>
+                <ul class="cmd-list">
+                  <li><span class="var-name">&lt;img src=""&gt;</span> Image simple</li>
+                  <li><span class="var-name">&lt;picture&gt;</span> Image avec alternatives</li>
+                  <li><span class="var-name">&lt;video src=""&gt;</span> Lecteur vidéo</li>
+                  <li><span class="var-name">&lt;audio src=""&gt;</span> Lecteur audio</li>
+                  <li><span class="var-name">&lt;iframe&gt;</span> Intégration (ex: YouTube)</li>
+                  <li><span class="var-name">&lt;svg&gt;</span> Image vectorielle en code</li>
+                  <li><span class="var-name">&lt;canvas&gt;</span> Zone de dessin JS (2D/3D)</li>
+                  <li><span class="var-name">&lt;figure&gt;</span> Image + légende associée</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <!-- ================= CSS ================= -->
+          <section class="cmd-section" data-category="css">
+            <div class="cmd-section-header">
+              <h2 class="cmd-section-title">CSS</h2>
+              <span class="cmd-section-badge">Styles & Mise en page</span>
+            </div>
+
+            <div class="cmd-section-grid">
+              <!-- LIGNE 1 : SNIPPETS CSS -->
+              <article class="cmd-card" data-search="css reset normalize margin padding box-sizing">
+                <button class="copy-btn">Copier</button>
+                <div class="cmd-card-label">Reset CSS Moderne</div>
+                <pre><code>*, *::before, *::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: sans-serif;
+}
+img { max-width: 100%; display: block; }</code></pre>
+                <p>Remet à zéro les styles des navigateurs.</p>
+              </article>
+
+              <article class="cmd-card" data-search="css flex center centrer milieu align-items justify-content">
+                <button class="copy-btn">Copier</button>
+                <div class="cmd-card-label">Centrage parfait (Flex)</div>
+                <pre><code>.center-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}</code></pre>
+                <p>Place un élément au milieu exact.</p>
+              </article>
+
+              <article class="cmd-card" data-search="css grid cards responsive columns auto-fit minmax">
+                <button class="copy-btn">Copier</button>
+                <div class="cmd-card-label">Grille auto-responsive</div>
+                <pre><code>.grid-container {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit, minmax(250px, 1fr)
+  );
+  gap: 16px;
+}</code></pre>
+                <p>Colonnes fluides sans media queries.</p>
+              </article>
+
+              <article class="cmd-card" data-search="css animation keyframes transition hover pulse">
+                <button class="copy-btn">Copier</button>
+                <div class="cmd-card-label">Animation Keyframes</div>
+                <pre><code>.element {
+  animation: pulse 2s infinite ease;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}</code></pre>
+                <p>Base pour animer un élément en boucle.</p>
+              </article>
+
+              <!-- LIGNE 2 : LISTES CSS -->
+              <article class="cmd-card" data-search="css variables vars liste aide memoire custom properties couleurs">
+                <div class="cmd-card-label">Aide-Mémoire : Vars HELPDEV</div>
+                <ul class="cmd-list">
+                  <li><span class="var-name">var(--bg)</span> Fond sombre global</li>
+                  <li><span class="var-name">var(--bg-panel)</span> Fond de carte / panneau</li>
+                  <li><span class="var-name">var(--text)</span> Texte clair principal</li>
+                  <li><span class="var-name">var(--border)</span> Bordures des blocs</li>
+                  <li><span class="var-name">var(--green)</span> Vert accent (Succès/Git)</li>
+                  <li><span class="var-name">var(--cyan)</span> Cyan accent (Éditeur)</li>
+                  <li><span class="var-name">var(--purple)</span> Violet accent (Variables)</li>
+                  <li><span class="var-name">var(--shadow)</span> Ombre portée douce</li>
+                </ul>
+              </article>
+
+              <article class="cmd-card"
+                data-search="css flexbox proprietes aide memoire flex-direction gap align justify flex-wrap">
+                <div class="cmd-card-label">Aide-Mémoire : Flexbox</div>
+                <ul class="cmd-list">
+                  <li><span class="var-name">display: flex</span> Active le mode Flex</li>
+                  <li><span class="var-name">flex-direction: column</span> Aligne de haut en bas</li>
+                  <li><span class="var-name">justify-content:</span> Alignement axe principal</li>
+                  <li><span class="var-name">align-items:</span> Alignement axe secondaire</li>
+                  <li><span class="var-name">gap: 16px</span> Espace entre les enfants</li>
+                  <li><span class="var-name">flex-wrap: wrap</span> Retour à la ligne auto</li>
+                  <li><span class="var-name">flex-grow: 1</span> L'enfant prend tout l'espace</li>
+                  <li><span class="var-name">align-self:</span> Surcharge l'alignement d'un enfant</li>
+                </ul>
+              </article>
+
+              <article class="cmd-card"
+                data-search="css box model margin padding border width height box-sizing border-radius overflow">
+                <div class="cmd-card-label">Aide-Mémoire : Box Model</div>
+                <ul class="cmd-list">
+                  <li><span class="var-name">margin: 10px</span> Espace extérieur</li>
+                  <li><span class="var-name">padding: 10px</span> Espace intérieur</li>
+                  <li><span class="var-name">border: 1px solid</span> Bordure de l'élément</li>
+                  <li><span class="var-name">width / max-width</span> Largeur / Largeur max</li>
+                  <li><span class="var-name">height / min-height</span> Hauteur / Hauteur min</li>
+                  <li><span class="var-name">box-sizing: border-box</span> Gère la taille globale</li>
+                  <li><span class="var-name">overflow: hidden</span> Cache ce qui déborde</li>
+                  <li><span class="var-name">border-radius: 8px</span> Arrondit les coins</li>
+                </ul>
+              </article>
+
+              <article class="cmd-card"
+                data-search="css selecteurs selectors pseudo class classes hover active before after nth-child">
+                <div class="cmd-card-label">Aide-Mémoire : Sélecteurs</div>
+                <ul class="cmd-list">
+                  <li><span class="var-name">.classe</span> Cible un attribut class=""</li>
+                  <li><span class="var-name">#id</span> Cible un attribut id="" unique</li>
+                  <li><span class="var-name">A B</span> Cible B à l'intérieur de A</li>
+                  <li><span class="var-name">A > B</span> Cible B enfant direct de A</li>
+                  <li><span class="var-name">:hover / :active</span> Au survol / Au clic</li>
+                  <li><span class="var-name">:nth-child(n)</span> Cible le n-ième enfant</li>
+                  <li><span class="var-name">::before / ::after</span> Ajoute du contenu en CSS</li>
+                  <li><span class="var-name">[type="text"]</span> Cible un attribut spécifique</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <!-- ================= JAVASCRIPT ================= -->
+          <section class="cmd-section" data-category="js">
+            <div class="cmd-section-header">
+              <h2 class="cmd-section-title">JavaScript</h2>
+              <span class="cmd-section-badge">Logique & DOM</span>
+            </div>
+
+            <div class="cmd-section-grid">
+              <!-- LIGNE 1 : SNIPPETS JS -->
+              <article class="cmd-card" data-search="js dom selecteur querySelector dollar jquery">
+                <button class="copy-btn">Copier</button>
+                <div class="cmd-card-label">Sélecteurs DOM courts</div>
+                <pre><code>const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+
+// Utilisation :
+const btn = $('.btn');
+const items = $$('.item');</code></pre>
+                <p>Raccourcis pour cibler rapidement.</p>
+              </article>
+
+              <article class="cmd-card" data-search="js fetch api get json requete ajax await async">
+                <button class="copy-btn">Copier</button>
+                <div class="cmd-card-label">Requête Fetch API</div>
+                <pre><code>async function getData(url) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('Erreur');
+    return await res.json();
+  } catch (err) {
+    console.error(err);
+  }
+}</code></pre>
+                <p>Récupérer du JSON depuis une API.</p>
+              </article>
+
+              <article class="cmd-card" data-search="js localstorage sauvegarde session storage json setitem getitem">
+                <button class="copy-btn">Copier</button>
+                <div class="cmd-card-label">Sauvegarde LocalStorage</div>
+                <pre><code>// Sauvegarder (Tableau/Objet)
+const data = { theme: 'dark' };
+localStorage.setItem('prefs', JSON.stringify(data));
+
+// Récupérer
+const saved = JSON.parse(localStorage.getItem('prefs'));</code></pre>
+                <p>Garder des données en mémoire locale.</p>
+              </article>
+
+              <article class="cmd-card" data-search="js debounce delay setTimeout optimisation scroll">
+                <button class="copy-btn">Copier</button>
+                <div class="cmd-card-label">Fonction Debounce</div>
+                <pre><code>function debounce(func, delay = 300) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { 
+      func.apply(this, args); 
+    }, delay);
+  };
+}</code></pre>
+                <p>Limite les appels (ex: scroll, input).</p>
+              </article>
+
+              <!-- LIGNE 2 : LISTES JS -->
+              <article class="cmd-card"
+                data-search="js variables types let const string number boolean array object typeof null">
+                <div class="cmd-card-label">Aide-Mémoire : Variables & Types</div>
+                <ul class="cmd-list">
+                  <li><span class="var-name">const x = 1;</span> Constante (non modifiable)</li>
+                  <li><span class="var-name">let y = 2;</span> Variable (modifiable)</li>
+                  <li><span class="var-name">String</span> Chaîne ("texte")</li>
+                  <li><span class="var-name">Number</span> Nombre (10, 3.14)</li>
+                  <li><span class="var-name">Boolean</span> Booléen (true / false)</li>
+                  <li><span class="var-name">Array []</span> Tableau (liste indexée)</li>
+                  <li><span class="var-name">Object {}</span> Objet (clé: valeur)</li>
+                  <li><span class="var-name">typeof x</span> Retourne le type de x</li>
+                </ul>
+              </article>
+
+              <article class="cmd-card"
+                data-search="js array arrays methodes tableaux map filter reduce find includes push pop splice">
+                <div class="cmd-card-label">Aide-Mémoire : Arrays (Tableaux)</div>
+                <ul class="cmd-list">
+                  <li><span class="var-name">.map(fn)</span> Transforme chaque élément</li>
+                  <li><span class="var-name">.filter(fn)</span> Garde ceux qui valident la fn</li>
+                  <li><span class="var-name">.reduce(fn)</span> Réduit le tableau à 1 valeur</li>
+                  <li><span class="var-name">.find(fn)</span> Retourne le 1er match trouvé</li>
+                  <li><span class="var-name">.push(x) / .pop()</span> Ajoute à la fin / Retire à la fin</li>
+                  <li><span class="var-name">.shift() / .unshift(x)</span> Retire au début / Ajoute au début</li>
+                  <li><span class="var-name">.includes(x)</span> true si x est dans le tableau</li>
+                  <li><span class="var-name">.join('-')</span> Transforme l'Array en String</li>
+                </ul>
+              </article>
+
+              <article class="cmd-card"
+                data-search="js string strings texte chaine length toUpperCase toLowerCase replace split trim substring">
+                <div class="cmd-card-label">Aide-Mémoire : Strings (Textes)</div>
+                <ul class="cmd-list">
+                  <li><span class="var-name">.length</span> Retourne la longueur du texte</li>
+                  <li><span class="var-name">.toUpperCase()</span> Met tout en majuscules</li>
+                  <li><span class="var-name">.toLowerCase()</span> Met tout en minuscules</li>
+                  <li><span class="var-name">.trim()</span> Enlève les espaces aux extrémités</li>
+                  <li><span class="var-name">.split(',')</span> Coupe le texte en Array</li>
+                  <li><span class="var-name">.replace('a','b')</span> Remplace 'a' par 'b'</li>
+                  <li><span class="var-name">.substring(0, 5)</span> Extrait les 5 premiers caractères</li>
+                  <li><span class="var-name">.includes('mot')</span> Vérifie si le mot est présent</li>
+                </ul>
+              </article>
+
+              <article class="cmd-card"
+                data-search="js dom manipulation document createElement appendChild addEventListener classList innerHTML textContent">
+                <div class="cmd-card-label">Aide-Mémoire : DOM Events</div>
+                <ul class="cmd-list">
+                  <li><span class="var-name">.querySelector()</span> Sélectionne un élément</li>
+                  <li><span class="var-name">.createElement('div')</span> Crée une nouvelle balise</li>
+                  <li><span class="var-name">.appendChild(el)</span> Ajoute un enfant au parent</li>
+                  <li><span class="var-name">.addEventListener()</span> Écoute un événement (ex: 'click')</li>
+                  <li><span class="var-name">.classList.add('c')</span> Ajoute une classe CSS</li>
+                  <li><span class="var-name">.classList.toggle()</span> Alterne une classe CSS</li>
+                  <li><span class="var-name">.textContent</span> Gère le texte brut d'une balise</li>
+                  <li><span class="var-name">.innerHTML</span> Gère le HTML interne d'une balise</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </main>
+  </div>
+  </div>
+
+  <!-- SCRIPT POUR LA RECHERCHE ET LA COPIE -->
+  <script src="../script/vars.js"></script>
+
+  <!-- INCLUSION DU THÈME CLAIR -->
+  <script src="../script/theme.js"></script>
+</body>
+
+</html>

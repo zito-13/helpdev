@@ -57,12 +57,12 @@
     border-bottom-color: var(--green);
 }
 
-.navbar__link--var:hover {
+.navbar__link--cmd:hover {
     color: var(--purple);
     border-bottom-color: var(--purple);
 }
 
-.navbar__link--cmd {
+.navbar__link--var {
     color: var(--cyan);
     border-bottom-color: var(--cyan);
 }
@@ -88,10 +88,27 @@
     color: var(--green);
 }
 
+/* ═══════════════════════════════════════════════════════════
+   VARS.CSS — Page Snippets & Variables
+═══════════════════════════════════════════════════════════ */
+
 .cmd-page {
     padding: 28px;
     overflow-y: auto;
     height: 100vh;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .cmd-hero {
@@ -99,9 +116,7 @@
     padding: 24px;
     border: 1px solid var(--border);
     border-radius: 12px;
-    background:
-        linear-gradient(180deg, rgba(44, 255, 114, 0.05), rgba(44, 255, 114, 0.015)),
-        var(--bg-panel);
+    background: linear-gradient(180deg, rgba(167, 139, 250, 0.05), rgba(167, 139, 250, 0.015)), var(--bg-panel);
     box-shadow: var(--shadow);
 }
 
@@ -122,7 +137,7 @@
 }
 
 .cmd-hero-title span {
-    color: var(--green);
+    color: var(--purple);
 }
 
 .cmd-hero-text {
@@ -148,7 +163,7 @@
 .cmd-stat-number {
     display: block;
     font-size: 24px;
-    color: var(--green);
+    color: var(--purple);
     font-family: var(--font-mono);
     line-height: 1;
     margin-bottom: 8px;
@@ -200,8 +215,8 @@
 .cmd-filter:hover,
 .cmd-filter.active {
     color: #fff;
-    border-color: rgba(44, 255, 114, 0.35);
-    background: rgba(44, 255, 114, 0.08);
+    border-color: rgba(167, 139, 250, 0.35);
+    background: rgba(167, 139, 250, 0.08);
 }
 
 .cmd-toolbar-meta {
@@ -256,37 +271,30 @@
     font-family: var(--font-mono);
 }
 
-.cmd-section[data-category="git"] .cmd-section-badge {
-    color: var(--green);
-    border-color: rgba(44, 255, 114, 0.35);
-    background: rgba(44, 255, 114, 0.08);
-}
-
-.cmd-section[data-category="sql"] .cmd-section-badge {
-    color: var(--blue);
-    border-color: rgba(91, 156, 246, 0.35);
-    background: rgba(91, 156, 246, 0.08);
-}
-
-.cmd-section[data-category="php"] .cmd-section-badge {
-    color: var(--purple);
-    border-color: rgba(167, 139, 250, 0.35);
-    background: rgba(167, 139, 250, 0.08);
-}
-
-.cmd-section[data-category="tools"] .cmd-section-badge {
+/* Couleurs de section adaptées pour Front-end */
+.cmd-section[data-category="html"] .cmd-section-badge {
     color: var(--orange);
     border-color: rgba(232, 147, 74, 0.35);
     background: rgba(232, 147, 74, 0.08);
 }
 
+.cmd-section[data-category="css"] .cmd-section-badge {
+    color: var(--blue);
+    border-color: rgba(91, 156, 246, 0.35);
+    background: rgba(91, 156, 246, 0.08);
+}
+
+.cmd-section[data-category="js"] .cmd-section-badge {
+    color: var(--yellow);
+    border-color: rgba(200, 163, 59, 0.35);
+    background: rgba(200, 163, 59, 0.08);
+}
+
 .cmd-section-grid {
     display: grid;
-    /* Force exactement 4 colonnes de même taille */
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     align-items: stretch;
-    margin-bottom: 30px;
 }
 
 .cmd-card {
@@ -294,12 +302,13 @@
     flex-direction: column;
     padding: 16px;
     border: 1px solid var(--border);
+    border-radius: 12px;
     background: var(--bg-panel);
     box-shadow: var(--shadow);
-    border-radius: 12px;
     transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     min-width: 0;
-    /* Empêche la carte de déborder de sa colonne */
+    position: relative;
+    margin-bottom:20px ;
 }
 
 .cmd-card:hover {
@@ -307,26 +316,22 @@
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03), 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
-.cmd-section[data-category="git"] .cmd-card {
-    border-left: 3px solid var(--green);
+.cmd-section[data-category="html"] .cmd-card {
+    border-left: 3px solid var(--orange);
 }
 
-.cmd-section[data-category="sql"] .cmd-card {
+.cmd-section[data-category="css"] .cmd-card {
     border-left: 3px solid var(--blue);
 }
 
-.cmd-section[data-category="php"] .cmd-card {
-    border-left: 3px solid var(--purple);
-}
-
-.cmd-section[data-category="tools"] .cmd-card {
-    border-left: 3px solid var(--orange);
+.cmd-section[data-category="js"] .cmd-card {
+    border-left: 3px solid var(--yellow);
 }
 
 .cmd-card-label {
     margin-bottom: 10px;
-    color: var(--yellow);
-    font-size: 13px;
+    color: #fff;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.5px;
 }
@@ -334,30 +339,107 @@
 .cmd-card pre {
     margin: 0 0 12px;
     padding: 12px;
-    /* Empêche le scroll horizontal, force le texte à aller à la ligne */
     white-space: pre-wrap;
     word-break: break-word;
     overflow-wrap: break-word;
     overflow-x: hidden;
     border: 1px solid #1a222a;
     background: #070a0e;
+    flex-grow: 1;
 }
 
 .cmd-card code {
     color: var(--cyan);
     font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* Coloration syntaxique simple basée sur les variables existantes */
+.cmd-section[data-category="html"] code {
+    color: var(--orange);
+}
+
+.cmd-section[data-category="css"] code {
+    color: var(--blue);
+}
+
+.cmd-section[data-category="js"] code {
+    color: var(--yellow);
+}
+
+/* Listes d'aide-mémoire sans balise PRE */
+.cmd-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-grow: 1;
+}
+
+.cmd-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-soft);
     font-size: 13px;
+    color: var(--text);
+}
+
+.cmd-list li:last-child {
+    border-bottom: none;
+}
+
+.cmd-list .var-name {
+    font-family: var(--font-mono);
+    color: var(--cyan);
+}
+
+.cmd-section[data-category="html"] .var-name {
+    color: var(--orange);
+}
+
+.cmd-section[data-category="css"] .var-name {
+    color: var(--blue);
+}
+
+.cmd-section[data-category="js"] .var-name {
+    color: var(--yellow);
 }
 
 .cmd-card p {
     margin: 0;
     color: var(--text-soft);
-    line-height: 1.6;
-    font-size: 13px;
-    flex-grow: 1;
+    line-height: 1.5;
+    font-size: 12px;
+    border-top: 1px solid var(--border-soft);
+    padding-top: 10px;
 }
 
-/* Rendre la grille responsive pour les petits écrans, tout en gardant 4 colonnes sur desktop */
+.copy-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 4px 8px;
+    font-size: 10px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.cmd-card:hover .copy-btn {
+    opacity: 1;
+}
+
+.copy-btn:hover {
+    color: #fff;
+    border-color: var(--purple);
+}
+
+/* RESPONSIVE */
 @media (max-width: 1300px) {
     .cmd-section-grid {
         grid-template-columns: repeat(3, 1fr);
