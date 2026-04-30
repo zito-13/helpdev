@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HELPDEV — Commandes</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/helpcmd.css">
+</head>
+
+<body>
+    <div class="app">
+
+        <main class="main">
+            <nav class="navbar">
+                <a href="./index.html" class="navbar__brand">HELP<span>DEV</span></a>
+                <span class="navbar__sep"></span>
+                <a href="index.html" class="navbar__link navbar__link--home">⌂ Accueil</a>
+                <a href="../pages/helpcmd.html" class="navbar__link navbar__link--cmd">&gt;_ Commandes</a>
+                <a href="#" class="navbar__link navbar__link--var">{ } Variables</a>
+                <a href="editeur.html" class="navbar__link navbar__link--editor">◈ Éditeur</a>
+                <div class="navbar__right">
+                    <div class="sidebar-nav-divider"></div>
+                <button id="themeToggle" class="sidebar-nav-item" style="width: 100%; cursor: pointer;">
+                    <span class="sidebar-nav-icon" id="themeIcon">☼</span>
+                    <span id="themeText">Mode Clair</span>
+                </button>
+                </div>
+                
+            </nav>
+            <div class="cmd-page">
+                <section class="cmd-hero">
+                    <div class="cmd-hero-top">
+                        <div>
+                            <h1 class="cmd-hero-title">Base de commandes <span>développeur</span></h1>
+                            <p class="cmd-hero-text">
+                                Une base rapide à consulter pour retrouver les commandes les plus utiles en
+                                développement web,
+                                versionning, SQL, backend PHP, Composer et terminal.
+                            </p>
+                        </div>
+                        <div class="cmd-hero-stats">
+                            <div class="cmd-stat">
+                                <span class="cmd-stat-number" id="heroCount">0</span>
+                                <span class="cmd-stat-label">Commandes visibles</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cmd-toolbar">
+                        <input type="text" id="searchInput" class="cmd-search"
+                            placeholder="Rechercher une commande, un mot-clé (ex: commit, clone, auth)..." />
+                        <div class="cmd-filter-group">
+                            <button class="cmd-filter active" data-filter="all">Tous</button>
+                            <button class="cmd-filter" data-filter="git">Git</button>
+                            <button class="cmd-filter" data-filter="sql">MySQL</button>
+                            <button class="cmd-filter" data-filter="php">PHP</button>
+                            <button class="cmd-filter" data-filter="tools">Tools</button>
+                        </div>
+                    </div>
+
+                    <div class="cmd-toolbar-meta">
+                        <div class="cmd-meta-box" id="resultCount">0 commandes</div>
+                        <div class="cmd-meta-box" id="activeFilter">Filtre: TOUS</div>
+                    </div>
+                </section>
+
+                <div class="cmd-sections">
+
+                    <!-- ================= GIT ================= -->
+                    <section class="cmd-section" data-category="git">
+                        <div class="cmd-section-header">
+                            <h2 class="cmd-section-title">Git</h2>
+                            <span class="cmd-section-badge">Versionning</span>
+                        </div>
+
+                        <div class="cmd-section-grid">
+                            <article class="cmd-card" data-search="git init création dépôt">
+                                <div class="cmd-card-label">Initialiser un dépôt</div>
+                                <pre><code>git init</code></pre>
+                                <p>Crée un dépôt Git vide ou réinitialise un dépôt existant dans le dossier courant.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="git clone télécharger copier repo distant">
+                                <div class="cmd-card-label">Cloner un dépôt</div>
+                                <pre><code>git clone URL_DU_REPO</code></pre>
+                                <p>Copie un dépôt existant avec son historique complet sur ta machine locale.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="git status état fichiers modifiés">
+                                <div class="cmd-card-label">Vérifier l’état</div>
+                                <pre><code>git status</code></pre>
+                                <p>Affiche les fichiers modifiés, ajoutés à l'index, ou non suivis par Git.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="git add index préparation ajouter tout">
+                                <div class="cmd-card-label">Préparer tous les fichiers</div>
+                                <pre><code>git add .</code></pre>
+                                <p>Ajoute toutes les modifications actuelles à l'index pour le prochain commit.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="git commit valider message sauvegarde">
+                                <div class="cmd-card-label">Créer un commit</div>
+                                <pre><code>git commit -m "message"</code></pre>
+                                <p>Enregistre l'état actuel de l'index dans l'historique du dépôt de façon permanente.
+                                </p>
+                            </article>
+
+                            <article class="cmd-card" data-search="git log historique arbre commits">
+                                <div class="cmd-card-label">Voir l'historique visuel</div>
+                                <pre><code>git log --oneline --graph</code></pre>
+                                <p>Affiche l'historique des commits de manière compacte avec un arbre des branches.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="git branch liste lister branches">
+                                <div class="cmd-card-label">Lister les branches</div>
+                                <pre><code>git branch</code></pre>
+                                <p>Affiche les branches locales. La branche courante est marquée d'un astérisque.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="git switch checkout changer branche">
+                                <div class="cmd-card-label">Changer de branche</div>
+                                <pre><code>git switch nom-branche</code></pre>
+                                <p>Bascule ton répertoire de travail sur la branche spécifiée.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="git switch create nouvelle branche checkout -b">
+                                <div class="cmd-card-label">Créer & basculer</div>
+                                <pre><code>git switch -c nom-branche</code></pre>
+                                <p>Crée une nouvelle branche et bascule immédiatement dessus.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="git merge fusion intégrer branche">
+                                <div class="cmd-card-label">Fusionner une branche</div>
+                                <pre><code>git merge nom-branche</code></pre>
+                                <p>Intègre les modifications de la branche indiquée dans ta branche courante.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="git pull récupérer maj fetch fusion remote">
+                                <div class="cmd-card-label">Récupérer & fusionner</div>
+                                <pre><code>git pull origin main</code></pre>
+                                <p>Récupère les nouveautés du dépôt distant et les fusionne dans ta branche locale.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="git push envoyer serveur distant origin">
+                                <div class="cmd-card-label">Envoyer les modifications</div>
+                                <pre><code>git push -u origin main</code></pre>
+                                <p>Envoie tes commits locaux sur le serveur distant et configure le suivi.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="git stash mettre de côté cache temporaire">
+                                <div class="cmd-card-label">Mettre de côté</div>
+                                <pre><code>git stash</code></pre>
+                                <p>Sauvegarde temporairement les modifications non validées pour nettoyer le répertoire.
+                                </p>
+                            </article>
+
+                            <article class="cmd-card" data-search="git reset hard annuler forcer clean">
+                                <div class="cmd-card-label">Annuler tout (Danger)</div>
+                                <pre><code>git reset --hard HEAD</code></pre>
+                                <p>Supprime toutes les modifications non commitées et revient au dernier commit.</p>
+                            </article>
+                        </div>
+                    </section>
+
+                    <!-- ================= MYSQL ================= -->
+                    <section class="cmd-section" data-category="sql">
+                        <div class="cmd-section-header">
+                            <h2 class="cmd-section-title">MySQL</h2>
+                            <span class="cmd-section-badge">Base de données</span>
+                        </div>
+
+                        <div class="cmd-section-grid">
+                            <article class="cmd-card" data-search="mysql connexion root console">
+                                <div class="cmd-card-label">Se connecter en Root</div>
+                                <pre><code>mysql -u root -p</code></pre>
+                                <p>Ouvre le client MySQL en ligne de commande. Le mot de passe sera demandé.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="show databases lister bases">
+                                <div class="cmd-card-label">Lister les bases</div>
+                                <pre><code>SHOW DATABASES;</code></pre>
+                                <p>Affiche toutes les bases de données disponibles sur le serveur.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="use utiliser sélectionner base">
+                                <div class="cmd-card-label">Sélectionner une base</div>
+                                <pre><code>USE nom_base;</code></pre>
+                                <p>Définit la base de données active pour exécuter les prochaines requêtes.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="show tables lister tables">
+                                <div class="cmd-card-label">Lister les tables</div>
+                                <pre><code>SHOW TABLES;</code></pre>
+                                <p>Affiche toutes les tables contenues dans la base de données sélectionnée.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="describe desc structure table colonnes">
+                                <div class="cmd-card-label">Voir la structure d'une table</div>
+                                <pre><code>DESCRIBE users;</code></pre>
+                                <p>Affiche les colonnes, types de données et clés d'une table spécifique.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="select from lire tout récupérer data">
+                                <div class="cmd-card-label">Récupérer toutes les données</div>
+                                <pre><code>SELECT * FROM users;</code></pre>
+                                <p>Sélectionne toutes les colonnes et toutes les lignes d'une table.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="select where filtre condition id">
+                                <div class="cmd-card-label">Filtrer avec WHERE</div>
+                                <pre><code>SELECT * FROM users WHERE id = 1;</code></pre>
+                                <p>Récupère uniquement la ou les lignes qui respectent la condition demandée.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="insert into ajouter créer donnée values">
+                                <div class="cmd-card-label">Insérer une ligne</div>
+                                <pre><code>INSERT INTO users (nom) VALUES ('Bob');</code></pre>
+                                <p>Ajoute un nouvel enregistrement dans la table avec les valeurs spécifiées.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="update set modifier mettre à jour">
+                                <div class="cmd-card-label">Mettre à jour une ligne</div>
+                                <pre><code>UPDATE users SET nom='Alice' WHERE id=1;</code></pre>
+                                <p>Modifie les données d'un enregistrement existant. Attention à ne pas oublier le WHERE
+                                    !</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="delete from supprimer effacer row">
+                                <div class="cmd-card-label">Supprimer une ligne</div>
+                                <pre><code>DELETE FROM users WHERE id = 1;</code></pre>
+                                <p>Supprime un ou plusieurs enregistrements. Toujours vérifier avec SELECT avant.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="mysqldump export sauvegarde dump backup sql">
+                                <div class="cmd-card-label">Exporter la base (Backup)</div>
+                                <pre><code>mysqldump -u root -p base &gt; bkp.sql</code></pre>
+                                <p>Génère un fichier .sql contenant la structure et les données pour la sauvegarde.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="mysql import source restaurer sql dump">
+                                <div class="cmd-card-label">Importer un Backup</div>
+                                <pre><code>mysql -u root -p base &lt; bkp.sql</code></pre>
+                                <p>Restaure les tables et données à partir d'un fichier .sql dans une base existante.
+                                </p>
+                            </article>
+                        </div>
+                    </section>
+
+                    <!-- ================= PHP / COMPOSER ================= -->
+                    <section class="cmd-section" data-category="php">
+                        <div class="cmd-section-header">
+                            <h2 class="cmd-section-title">PHP & Composer</h2>
+                            <span class="cmd-section-badge">Backend</span>
+                        </div>
+
+                        <div class="cmd-section-grid">
+                            <article class="cmd-card" data-search="php -v version">
+                                <div class="cmd-card-label">Vérifier la version PHP</div>
+                                <pre><code>php -v</code></pre>
+                                <p>Affiche la version de PHP installée et active en ligne de commande.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="php -S serveur local localhost">
+                                <div class="cmd-card-label">Lancer le serveur local PHP</div>
+                                <pre><code>php -S localhost:8000</code></pre>
+                                <p>Démarre un serveur de développement rapide dans le dossier courant.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="php index.php exécuter lancer script">
+                                <div class="cmd-card-label">Exécuter un script</div>
+                                <pre><code>php script.php</code></pre>
+                                <p>Interprète et exécute un fichier PHP directement depuis le terminal.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="php -l lint syntaxe erreur parse">
+                                <div class="cmd-card-label">Vérifier la syntaxe</div>
+                                <pre><code>php -l fichier.php</code></pre>
+                                <p>Vérifie s'il y a des erreurs de syntaxe (parse error) sans exécuter le code.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="composer install installer vendor json lock">
+                                <div class="cmd-card-label">Installer les dépendances</div>
+                                <pre><code>composer install</code></pre>
+                                <p>Lit le composer.lock et installe les versions exactes des packages du projet.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="composer update mettre à jour packages">
+                                <div class="cmd-card-label">Mettre à jour les dépendances</div>
+                                <pre><code>composer update</code></pre>
+                                <p>Met à jour les bibliothèques selon les règles définies dans composer.json.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="composer require ajouter package librairie">
+                                <div class="cmd-card-label">Ajouter une librairie</div>
+                                <pre><code>composer require vendor/nom</code></pre>
+                                <p>Télécharge un nouveau package et l'ajoute automatiquement au composer.json.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="composer dump-autoload autoload classes namespace">
+                                <div class="cmd-card-label">Régénérer l'Autoload</div>
+                                <pre><code>composer dump-autoload</code></pre>
+                                <p>Met à jour le système de chargement automatique des classes après un renommage.</p>
+                            </article>
+                        </div>
+                    </section>
+
+                    <!-- ================= TERMINAL ================= -->
+                    <section class="cmd-section" data-category="tools">
+                        <div class="cmd-section-header">
+                            <h2 class="cmd-section-title">Terminal & Node</h2>
+                            <span class="cmd-section-badge">Outils CLI</span>
+                        </div>
+
+                        <div class="cmd-section-grid">
+                            <article class="cmd-card" data-search="cd dossier naviguer changer repertoire">
+                                <div class="cmd-card-label">Changer de dossier</div>
+                                <pre><code>cd nom-dossier</code></pre>
+                                <p>Permet de se déplacer dans l'arborescence vers un dossier enfant.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="cd .. remonter parent naviguer">
+                                <div class="cmd-card-label">Remonter au parent</div>
+                                <pre><code>cd ..</code></pre>
+                                <p>Remonte d'un niveau dans l'arborescence des dossiers.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="ls dir lister fichiers contenu">
+                                <div class="cmd-card-label">Lister le contenu</div>
+                                <pre><code>ls</code></pre>
+                                <p>Affiche les fichiers et dossiers (utiliser <code>dir</code> sous l'invite de commande
+                                    Windows).</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="mkdir créer dossier repertoire make">
+                                <div class="cmd-card-label">Créer un dossier</div>
+                                <pre><code>mkdir nom-dossier</code></pre>
+                                <p>Crée un nouveau répertoire vide à l'emplacement actuel.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="npm install installer node_modules paquet">
+                                <div class="cmd-card-label">Installer modules Node</div>
+                                <pre><code>npm install</code></pre>
+                                <p>Télécharge les dépendances JS du projet listées dans le package.json.</p>
+                            </article>
+
+                            <article class="cmd-card" data-search="npm run dev start script lancement build">
+                                <div class="cmd-card-label">Lancer un script JS</div>
+                                <pre><code>npm run dev</code></pre>
+                                <p>Exécute un script personnalisé (ex: dev, build) défini dans le package.json.</p>
+                            </article>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../script/helpcmd.js"></script>
+    <script src="../script/theme.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HELPDEV — Éditeur Web</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/editeur.css" />
+</head>
+
+<body>
+    <div class="app">
+        <div class="main">
+
+            <nav class="navbar">
+                <a href="./index.html" class="navbar__brand">HELP<span>DEV</span></a>
+                <span class="navbar__sep"></span>
+                <a href="index.html" class="navbar__link navbar__link--home">⌂ Accueil</a>
+                <a href="../pages/helpcmd.html" class="navbar__link navbar__link--cmd">&gt;_ Commandes</a>
+                <a href="#" class="navbar__link navbar__link--var">{ } Variables</a>
+                <a href="editeur.html" class="navbar__link navbar__link--editor">◈ Éditeur</a>
+                <div class="navbar__right">
+                    <div class="sidebar-nav-divider"></div>
+                <button id="themeToggle" class="sidebar-nav-item" style="width: 100%; cursor: pointer;">
+                    <span class="sidebar-nav-icon" id="themeIcon">☼</span>
+                    <span id="themeText">Mode Clair</span>
+                </button>
+                </div>
+                
+            </nav>
+
+            <div class="editor-topbar">
+                <div class="editor-topbar__path">~/helpdev / outils / <span>editeur-web</span></div>
+                <div class="editor-topbar__actions">
+                    <div class="layout-toggle">
+                        <button class="layout-btn layout-btn--active" id="btnSplit" onclick="setLayout('split')"
+                            title="Split">⊟</button>
+                        <button class="layout-btn" id="btnEditor" onclick="setLayout('editor')"
+                            title="Code seul">▤</button>
+                        <button class="layout-btn" id="btnPreview" onclick="setLayout('preview')"
+                            title="Aperçu seul">▣</button>
+                    </div>
+                    <button class="editor-btn editor-btn--run" onclick="runCode()">▶ Exécuter</button>
+                    <button class="editor-btn editor-btn--save" onclick="exportCode()">⬇ Exporter</button>
+                    <button class="editor-btn editor-btn--clear" onclick="resetCode()">✕ Reset</button>
+                </div>
+                <div class="editor-topbar__right">
+                    <span class="status-badge status-badge--ok" id="statusMsg">● PRÊT</span>
+                    <span class="status-badge" style="color:#3d4450" id="renderTime">--ms</span>
+                </div>
+            </div>
+
+            <div class="editor-tabs">
+                <div class="editor-tab editor-tab--html active" id="tab-html" onclick="switchTab('html')">
+                    <span class="editor-tab--dot" style="background:var(--orange)"></span>HTML
+                </div>
+                <div class="editor-tab editor-tab--css" id="tab-css" onclick="switchTab('css')">
+                    <span class="editor-tab--dot" style="background:var(--blue)"></span>CSS
+                </div>
+                <div class="editor-tab editor-tab--js" id="tab-js" onclick="switchTab('js')">
+                    <span class="editor-tab--dot" style="background:var(--yellow)"></span>JS
+                </div>
+                <div class="tabs-right">
+                    <span id="cursorPos">Ln 1, Col 1</span>
+                    <span id="charCount">0 chars</span>
+                </div>
+            </div>
+
+            <div class="editor-body" id="editorBody">
+
+                <div class="code-pane" id="codePaneEl">
+
+                    <div class="panel active" id="panel-html">
+                        <div class="pane-header pane-header--html">
+                            <span class="pane-header__title">◈ HTML</span>
+                            <span class="pane-header__meta" id="meta-html">0 lignes</span>
+                        </div>
+                        <div class="code-wrap">
+                            <div class="line-numbers" id="ln-html"></div>
+                            <textarea class="code-textarea code-textarea--html" id="ed-html" spellcheck="false"
+                                autocomplete="off" oninput="onInput('html')" onkeydown="handleTab(event)"
+                                onscroll="syncScroll('html')" onkeyup="updateCursor()"
+                                onclick="updateCursor()"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="panel" id="panel-css">
+                        <div class="pane-header pane-header--css">
+                            <span class="pane-header__title">◈ CSS</span>
+                            <span class="pane-header__meta" id="meta-css">0 lignes</span>
+                        </div>
+                        <div class="code-wrap">
+                            <div class="line-numbers" id="ln-css"></div>
+                            <textarea class="code-textarea code-textarea--css" id="ed-css" spellcheck="false"
+                                autocomplete="off" oninput="onInput('css')" onkeydown="handleTab(event)"
+                                onscroll="syncScroll('css')" onkeyup="updateCursor()"
+                                onclick="updateCursor()"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="panel" id="panel-js">
+                        <div class="pane-header pane-header--js">
+                            <span class="pane-header__title">◈ JavaScript</span>
+                            <span class="pane-header__meta" id="meta-js">0 lignes</span>
+                        </div>
+                        <div class="code-wrap">
+                            <div class="line-numbers" id="ln-js"></div>
+                            <textarea class="code-textarea code-textarea--js" id="ed-js" spellcheck="false"
+                                autocomplete="off" oninput="onInput('js')" onkeydown="handleTab(event)"
+                                onscroll="syncScroll('js')" onkeyup="updateCursor()"
+                                onclick="updateCursor()"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="resize-handle" id="resizeHandle"></div>
+
+                <div class="preview-pane" id="previewPaneEl">
+                    <div class="pane-header pane-header--preview">
+                        <span class="pane-header__title">◈ Rendu en temps réel</span>
+                        <span class="pane-header__meta" id="previewMeta">srcdoc</span>
+                    </div>
+                    <iframe id="previewFrame" class="preview-iframe" sandbox="allow-scripts allow-same-origin"></iframe>
+                    <div class="preview-toolbar">
+                        <button class="device-btn active" onclick="setDevice('full',this)">Full</button>
+                        <button class="device-btn" onclick="setDevice('1280px',this)">1280</button>
+                        <button class="device-btn" onclick="setDevice('768px',this)">768</button>
+                        <button class="device-btn" onclick="setDevice('375px',this)">375</button>
+                        <span class="preview-toolbar__sep"></span>
+                        <span class="preview-status preview-status--ok" id="previewStatus">● OK</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="console-pane">
+                <div class="console-bar">
+                    <span class="console-bar__title">Console</span>
+                    <span class="console-count" id="cntAll">0</span>
+                    <span class="console-count console-count--warn" id="cntWarn" style="display:none">0 ⚠</span>
+                    <span class="console-count console-count--err" id="cntErr" style="display:none">0 ✕</span>
+                    <span style="font-size:9px;color:#3d4450;margin-left:4px;letter-spacing:2px">AUTO-RUN</span>
+                    <button class="editor-btn" style="height:20px;padding:0 10px;font-size:9px;margin-left:4px"
+                        id="btnAuto" onclick="toggleAuto()">OFF</button>
+                    <button class="editor-btn" style="height:20px;padding:0 10px;font-size:9px;margin-left:auto"
+                        onclick="clearConsole()">Vider</button>
+                </div>
+                <div class="console-body" id="consoleBody">
+                    <span class="log-info">[HELPDEV] Éditeur prêt — Ctrl+Enter = Exécuter · Ctrl+S = Exporter</span>
+                </div>
+            </div>
+
+            <footer class="statusbar">
+                <div class="statusbar__left">
+                    <span><span class="statusbar__dot"></span><span class="sb-cyan">ÉDITEUR ACTIF</span></span>
+                    <span class="statusbar__sep">|</span>
+                    <span id="sb-tab">HTML</span>
+                    <span class="statusbar__sep">|</span>
+                    <span id="sb-cursor">Ln 1, Col 1</span>
+                    <span class="statusbar__sep">|</span>
+                    <span id="sb-autorun" style="color:#3d4450">AUTO: OFF</span>
+                </div>
+                <div class="statusbar__right">
+                    <span>HELPDEV EDITOR v1.0</span>
+                    <span class="statusbar__sep">|</span>
+                    <span id="sb-clock">--:--:--</span>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+    <script src="../script/editeur.js"></script>
+    <script src="../script/theme.js"></script>
+</body>
+
+</html>
